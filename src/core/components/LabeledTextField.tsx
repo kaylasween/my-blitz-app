@@ -1,5 +1,6 @@
 import { forwardRef, ComponentPropsWithoutRef, PropsWithoutRef } from "react"
 import { useField, UseFieldConfig } from "react-final-form"
+import styles from "./LabeledTextField.module.css"
 
 export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
   /** Field name. */
@@ -30,34 +31,24 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
     const normalizedError = Array.isArray(error) ? error.join(", ") : error || submitError
 
     return (
-      <div {...outerProps}>
-        <label {...labelProps}>
+      <div className={styles.formField} {...outerProps}>
+        <label htmlFor={props.id} className={styles.label} {...labelProps}>
           {label}
-          <input {...input} disabled={submitting} {...props} ref={ref} />
         </label>
+        <input
+          id={props.id}
+          className={styles.inputField}
+          {...input}
+          disabled={submitting}
+          {...props}
+          ref={ref}
+        />
 
         {touched && normalizedError && (
           <div role="alert" style={{ color: "red" }}>
             {normalizedError}
           </div>
         )}
-
-        <style jsx>{`
-          label {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            font-size: 1rem;
-          }
-          input {
-            font-size: 1rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 3px;
-            border: 1px solid purple;
-            appearance: none;
-            margin-top: 0.5rem;
-          }
-        `}</style>
       </div>
     )
   }
