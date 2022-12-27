@@ -1,0 +1,18 @@
+.vote {
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.choice {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+}

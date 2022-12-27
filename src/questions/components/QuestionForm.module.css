@@ -1,0 +1,9 @@
+.choiceBtn {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.newChoiceRow {
+  display: flex;
+  justify-content: flex-end;
+}
